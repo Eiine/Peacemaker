@@ -18,9 +18,7 @@ const engine = new Peacemaker_engine();
 
 await fs.ensureDir("./temp_audios");
 
-/**
- * Función para disparar la alerta sonora vía Bot API usando AXIOS
- */
+
 async function enviarAlertaBot(texto, reintento = 1) {
     const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
     const maxReintentos = 10; // Intentará hasta 10 veces
