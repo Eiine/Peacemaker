@@ -1,45 +1,158 @@
-🛡️ Peacemaker: Registro y Análisis Táctico de Conflictos
-Peacemaker es un ecosistema de software diseñado para el monitoreo, pacificación y documentación de interacciones digitales conflictivas. El proyecto nace de la necesidad de transformar el ruido emocional de las comunicaciones interpersonales en datos operativos, objetivos y legalmente trazables.
+<div align="center">
+  
+# 🛡️ Peacemaker
 
-📜 Origen del Proyecto
-El proyecto surge como una herramienta de protección ante dinámicas de comunicación complejas (litigios familiares o parejas conflictivas). La idea central es evitar el desgaste psicológico del usuario, permitiendo que una IA procese los mensajes, extraiga la información relevante (acuerdos, horarios, solicitudes) y genere un registro inmutable que pueda ser utilizado como prueba en instancias judiciales o de mediación.
+### *Registro y Análisis Táctico de Conflictos*
 
-🛠️ Stack Tecnológico
-Core: Node.js (v21+)
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![Node](https://img.shields.io/badge/node-%3E%3D21.0-green)
+![License](https://img.shields.io/badge/license-MIT-yellow)
+![Status](https://img.shields.io/badge/status-stable-brightgreen)
 
-Telegram Client: GramJS (basado en la API oficial de Telegram)
+*Transforma el ruido emocional en datos operativos, objetivos y legalmente trazables.*
 
-Motor de IA: Peacemaker Engine (Híbrido Gemini 1.5 Flash/Pro)
+</div>
 
-Hardware: Servidor local (AMD Phenom 955, 4GB RAM) sobre Ubuntu Server / Debian
+---
 
-Notificaciones: Telegram Bot API vía Axios
+## 📖 Origen del Proyecto
 
-🚀 Funcionalidades Operativas (v1.0)
-Monitoreo Selectivo: Escucha activa de IDs específicos mediante StringSession para garantizar privacidad.
+Peacemaker nace como una herramienta de **protección psicológica y legal** ante dinámicas de comunicación complejas: litigios familiares, separaciones conflictivas o relaciones tóxicas.
 
-Procesamiento Multimodal: Captura y transcripción automática de mensajes de texto y audios (archivos .ogg).
+**La idea es simple pero poderosa:**  
+> *Que una IA procese los mensajes, extraiga solo lo relevante y genere un registro inmutable, mientras tú evitas el desgaste emocional.*
 
-Ventana de Análisis Temporal: Agrupación de mensajes en bloques de 1 minuto para evitar reportes fragmentados y dar contexto a la IA.
+---
 
-Motor de Pacificación: Filtrado de carga emocional, insultos o manipulaciones, entregando solo "Datos Operativos".
+## 🛠️ Stack Tecnológico
 
-Identificación de Actores: El sistema reconoce y etiqueta quién emite cada mensaje para una trazabilidad clara.
+| Componente | Tecnología |
+|------------|------------|
+| **Runtime** | Node.js (v21+) |
+| **Telegram Client** | GramJS (API oficial) |
+| **Motor IA** | Gemini 2.5-flash + fallback 1.5-flash-lite |
+| **Hardware** | AMD Phenom 955, 4GB RAM (Ubuntu/Debian) |
+| **Notificaciones** | Telegram Bot API + Axios |
 
-Alertas Sonoras (Bot Bridge): Uso de un bot intermediario para asegurar que el usuario reciba notificaciones ruidosas y prioritarias en su dispositivo móvil.
+---
 
-🏗️ En Desarrollo / Próximas Fases
-Registro Inmutable (SQLite): Implementación de base de datos local para almacenamiento histórico con firmas de integridad (Hashes) para validez pericial.
+## 🚀 Funcionalidades Operativas (v1.0)
 
-Módulo de No Negociables: Sistema basado en reglas (JSON) para contrastar peticiones entrantes con acuerdos fijados (ej. horarios de visita).
+### 📡 Captura Inteligente
+- **Monitoreo selectivo** de IDs específicos mediante StringSession
+- **Ventana de análisis** de 1 minuto (evita reportes fragmentados)
 
-Respuestas Diplomáticas: Sugerencia de respuestas automáticas basadas en "comunicación no violenta" y límites legales establecidos, permitiendo al usuario contestar con un solo clic.
+### 🧠 Procesamiento Multimodal
+| Tipo | Acción |
+|------|--------|
+| 📝 **Texto** | Extracción de solicitudes operativas |
+| 🎙️ **Audio** | Transcripción y análisis de contenido |
+| 🖼️ **Imagen** | OCR y comprensión visual de capturas de chat |
 
-Generador de Informes PDF: Exportación automática de logs mensuales formateados para presentación ante abogados o juzgados.
+### 🛡️ Pacificación
+- ❌ Eliminación de insultos y adjetivos descalificativos
+- ❌ Filtrado de carga emocional y manipulaciones
+- ✅ Solo entrega **Datos Operativos** (tareas, lugares, fechas)
 
-Dockerización: Contenedores para despliegue rápido en hardware de recursos limitados.
+### 🔔 Alertas Robusta
+- Bridge con Telegram Bot
+- **Sistema de reintentos** (hasta 10 veces) ante fallos de red
+- Notificaciones sonoras prioritarias
 
-⚠️ Consideraciones de Seguridad
-Este sistema opera bajo el principio de "Human-in-the-loop". Si bien la IA analiza y sugiere, la responsabilidad final de la comunicación y el uso de la información recae en el usuario. El sistema está diseñado para cumplir con las políticas de uso de Telegram evitando el spam y priorizando el flujo de datos personales.
+---
 
-Desarrollado con ❤️ y pragmatismo por Miguel - Analista de Sistemas.
+## 🏗️ Próximas Fases
+
+<table>
+<tr>
+<td width="50%">
+
+### 🔒 Registro Inmutable
+- SQLite local
+- Hash de integridad
+- Validez pericial
+
+</td>
+<td width="50%">
+
+### 📜 Módulo No Negociables
+- Reglas en JSON
+- Contraste automático
+- Alertas por incumplimiento
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 💬 Respuestas Diplomáticas
+- Sugerencias CNV
+- Respuestas 1-clic
+- Límites legales
+
+</td>
+<td width="50%">
+
+### 📄 Generador PDF
+- Exportación mensual
+- Formato judicial
+- Logs trazables
+
+</td>
+</tr>
+</table>
+
+---
+
+## 🔒 Seguridad y Privacidad
+
+> **Human-in-the-loop**
+
+La IA asiste y sugiere, pero la **responsabilidad final** recae en el usuario.
+
+- ✅ No se almacenan mensajes originales
+- ✅ Reportes efímeros (se eliminan tras envío)
+- ✅ Cumple políticas de uso de Telegram
+- ✅ Sin spam, solo flujo de datos personal
+
+---
+
+## 📂 Estructura del Proyecto
+
+Peacemaker/
+├── index.js # Cliente Telegram + Lógica de captura
+├── Peacemaker_engine.js # Motor IA (Gemini)
+├── temp_audios/ # Archivos temporales (autolimpieza)
+├── .env # Variables sensibles
+└── README.md
+
+
+---
+
+## 🚦 Instalación Rápida
+
+```bash
+# Clonar repositorio
+git clone https://github.com/tuusuario/peacemaker.git
+cd peacemaker
+
+# Instalar dependencias
+npm install
+
+# Configurar variables de entorno
+cp .env.example .env
+# Editar .env con tus credenciales
+
+# Ejecutar
+node index.js
+
+apiId=TU_API_ID
+apiHash=TU_API_HASH
+session=TU_STRING_SESSION
+yo=ID_NUMERICO_DEL_USUARIO
+TELEGRAM_BOT_TOKEN=TOKEN_DEL_BOT
+GEMINI_API_KEY=TU_CLAVE_GEMINI
+
+ Licencia
+MIT © Miguel - Analista de Sistemas
+</div>
