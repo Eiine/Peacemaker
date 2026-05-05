@@ -1,0 +1,13 @@
+services:
+  peacemaker:
+    build: .
+    container_name: peacemaker_service
+    restart: always
+    env_file:
+      - .env
+    deploy:
+      resources:
+        limits:
+          memory: 200M
+    volumes:
+      - ./temp_audios:/app/temp_audios
