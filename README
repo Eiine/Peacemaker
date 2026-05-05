@@ -1,17 +1,14 @@
-<div align="center">
-  
+
 # 🛡️ Peacemaker
 
 ### *Registro y Análisis Táctico de Conflictos*
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![Node](https://img.shields.io/badge/node-%3E%3D21.0-green)
-![License](https://img.shields.io/badge/license-MIT-yellow)
-![Status](https://img.shields.io/badge/status-stable-brightgreen)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/tuusuario/peacemaker)
+[![Node](https://img.shields.io/badge/node-%3E%3D21.0-green)](https://nodejs.org)
+[![License](https://img.shields.io/badge/license-MIT-yellow)](LICENSE)
+[![Status](https://img.shields.io/badge/status-stable-brightgreen)]()
 
-*Transforma el ruido emocional en datos operativos, objetivos y legalmente trazables.*
-
-</div>
+> *Transforma el ruido emocional en datos operativos, objetivos y legalmente trazables.*
 
 ---
 
@@ -43,6 +40,7 @@ Peacemaker nace como una herramienta de **protección psicológica y legal** ant
 - **Ventana de análisis** de 1 minuto (evita reportes fragmentados)
 
 ### 🧠 Procesamiento Multimodal
+
 | Tipo | Acción |
 |------|--------|
 | 📝 **Texto** | Extracción de solicitudes operativas |
@@ -63,44 +61,25 @@ Peacemaker nace como una herramienta de **protección psicológica y legal** ant
 
 ## 🏗️ Próximas Fases
 
-<table>
-<tr>
-<td width="50%">
-
-### 🔒 Registro Inmutable
+**🔒 Registro Inmutable**
 - SQLite local
 - Hash de integridad
 - Validez pericial
 
-</td>
-<td width="50%">
-
-### 📜 Módulo No Negociables
+**📜 Módulo No Negociables**
 - Reglas en JSON
 - Contraste automático
 - Alertas por incumplimiento
 
-</td>
-</tr>
-<tr>
-<td width="50%">
-
-### 💬 Respuestas Diplomáticas
+**💬 Respuestas Diplomáticas**
 - Sugerencias CNV
 - Respuestas 1-clic
 - Límites legales
 
-</td>
-<td width="50%">
-
-### 📄 Generador PDF
+**📄 Generador PDF**
 - Exportación mensual
 - Formato judicial
 - Logs trazables
-
-</td>
-</tr>
-</table>
 
 ---
 
@@ -110,10 +89,12 @@ Peacemaker nace como una herramienta de **protección psicológica y legal** ant
 
 La IA asiste y sugiere, pero la **responsabilidad final** recae en el usuario.
 
-- ✅ No se almacenan mensajes originales
-- ✅ Reportes efímeros (se eliminan tras envío)
-- ✅ Cumple políticas de uso de Telegram
-- ✅ Sin spam, solo flujo de datos personal
+| Aspecto | Estado |
+|---------|--------|
+| Almacenamiento de mensajes originales | ❌ No se almacenan |
+| Reportes | ✅ Efímeros (se eliminan tras envío) |
+| Políticas de Telegram | ✅ Cumplidas |
+| Spam | ❌ No se genera |
 
 ---
 
@@ -141,10 +122,6 @@ npm install
 
 # Configurar variables de entorno
 cp .env.example .env
-# Editar .env con tus credenciales
-
-# Ejecutar
-node index.js
 
 apiId=TU_API_ID
 apiHash=TU_API_HASH
@@ -153,6 +130,8 @@ yo=ID_NUMERICO_DEL_USUARIO
 TELEGRAM_BOT_TOKEN=TOKEN_DEL_BOT
 GEMINI_API_KEY=TU_CLAVE_GEMINI
 
- Licencia
+# Ejecutar
+node index.js
+
+📜 Licencia
 MIT © Miguel - Analista de Sistemas
-</div>
