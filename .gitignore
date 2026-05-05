@@ -1,0 +1,4 @@
+.env
+apikey.txt
+temp_audios/
+/node_modules

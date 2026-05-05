@@ -1,0 +1,45 @@
+🛡️ Peacemaker: Registro y Análisis Táctico de Conflictos
+Peacemaker es un ecosistema de software diseñado para el monitoreo, pacificación y documentación de interacciones digitales conflictivas. El proyecto nace de la necesidad de transformar el ruido emocional de las comunicaciones interpersonales en datos operativos, objetivos y legalmente trazables.
+
+📜 Origen del Proyecto
+El proyecto surge como una herramienta de protección ante dinámicas de comunicación complejas (litigios familiares o parejas conflictivas). La idea central es evitar el desgaste psicológico del usuario, permitiendo que una IA procese los mensajes, extraiga la información relevante (acuerdos, horarios, solicitudes) y genere un registro inmutable que pueda ser utilizado como prueba en instancias judiciales o de mediación.
+
+🛠️ Stack Tecnológico
+Core: Node.js (v21+)
+
+Telegram Client: GramJS (basado en la API oficial de Telegram)
+
+Motor de IA: Peacemaker Engine (Híbrido Gemini 1.5 Flash/Pro)
+
+Hardware: Servidor local (AMD Phenom 955, 4GB RAM) sobre Ubuntu Server / Debian
+
+Notificaciones: Telegram Bot API vía Axios
+
+🚀 Funcionalidades Operativas (v1.0)
+Monitoreo Selectivo: Escucha activa de IDs específicos mediante StringSession para garantizar privacidad.
+
+Procesamiento Multimodal: Captura y transcripción automática de mensajes de texto y audios (archivos .ogg).
+
+Ventana de Análisis Temporal: Agrupación de mensajes en bloques de 1 minuto para evitar reportes fragmentados y dar contexto a la IA.
+
+Motor de Pacificación: Filtrado de carga emocional, insultos o manipulaciones, entregando solo "Datos Operativos".
+
+Identificación de Actores: El sistema reconoce y etiqueta quién emite cada mensaje para una trazabilidad clara.
+
+Alertas Sonoras (Bot Bridge): Uso de un bot intermediario para asegurar que el usuario reciba notificaciones ruidosas y prioritarias en su dispositivo móvil.
+
+🏗️ En Desarrollo / Próximas Fases
+Registro Inmutable (SQLite): Implementación de base de datos local para almacenamiento histórico con firmas de integridad (Hashes) para validez pericial.
+
+Módulo de No Negociables: Sistema basado en reglas (JSON) para contrastar peticiones entrantes con acuerdos fijados (ej. horarios de visita).
+
+Respuestas Diplomáticas: Sugerencia de respuestas automáticas basadas en "comunicación no violenta" y límites legales establecidos, permitiendo al usuario contestar con un solo clic.
+
+Generador de Informes PDF: Exportación automática de logs mensuales formateados para presentación ante abogados o juzgados.
+
+Dockerización: Contenedores para despliegue rápido en hardware de recursos limitados.
+
+⚠️ Consideraciones de Seguridad
+Este sistema opera bajo el principio de "Human-in-the-loop". Si bien la IA analiza y sugiere, la responsabilidad final de la comunicación y el uso de la información recae en el usuario. El sistema está diseñado para cumplir con las políticas de uso de Telegram evitando el spam y priorizando el flujo de datos personales.
+
+Desarrollado con ❤️ y pragmatismo por Miguel - Analista de Sistemas.
