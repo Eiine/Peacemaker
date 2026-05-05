@@ -8,10 +8,10 @@ import axios from "axios"; // Importamos Axios para mayor estabilidad
 
 dotenv.config();
 
-const apiId = 2040;
-const apiHash = "b18441a1ff607e106cf947a4ba59624d";
+const apiId = parseInt(process.env.apiId);
+const apiHash = process.env.apiHash;
 const stringSession = new StringSession(process.env.session);
-const TARGET_ID = process.env.yo; 
+const TARGET_ID = process.env.problema; 
 const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 
 const engine = new Peacemaker_engine();
