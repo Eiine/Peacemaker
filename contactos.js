@@ -2,7 +2,7 @@ import { TelegramClient } from "telegram";
 import { StringSession } from "telegram/sessions/index.js";
 import 'dotenv/config';
 
-const apiId = process.env.apiId;
+const apiId = parseInt(process.env.apiId);
 const apiHash = process.env.apiHash;
 const stringSession = new StringSession(process.env.session);
 const TARGET_ID = process.env.problema; 

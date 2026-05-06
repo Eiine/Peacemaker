@@ -21,8 +21,7 @@ await fs.ensureDir("./temp_audios");
 
 async function enviarAlertaBot(texto, reintento = 1) {
     const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-    const maxReintentos = 10; // Intentará hasta 10 veces
-    const baseDelay = 5000; // 5 segundos iniciales
+    const baseDelay = 5000; // 5 segundos base
     
     const textoLimpio = texto
         .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
@@ -36,7 +35,7 @@ async function enviarAlertaBot(texto, reintento = 1) {
 
     try {
         const response = await axios.post(url, payload, { 
-            timeout: 20000,
+            timeout: 30000, // Aumentamos a 30s por si la red está lenta
             family: 4
         });
         
@@ -45,21 +44,26 @@ async function enviarAlertaBot(texto, reintento = 1) {
             return true;
         }
     } catch (error) {
+        // Detectamos si es un problema de conectividad
         const esErrorRed = error.code === 'ENOTFOUND' || 
-                          error.code === 'ECONNRESET' || 
-                          error.code === 'ETIMEDOUT' ||
-                          error.message.includes('getaddrinfo');
+                           error.code === 'ECONNRESET' || 
+                           error.code === 'ETIMEDOUT' ||
+                           error.code === 'EHOSTUNREACH' ||
+                           error.message.includes('getaddrinfo');
         
-        if (esErrorRed && reintento <= maxReintentos) {
-            // Calcular espera: 5s, 10s, 20s, 40s, 80s, 160s... (máx 5 minutos)
-            const delay = Math.min(baseDelay * Math.pow(1.5, reintento - 1), 300000);
-            console.warn(`⚠️ Error de red (intento ${reintento}/${maxReintentos}). Reintentando en ${Math.round(delay/1000)} segundos...`);
-            console.warn(`   Motivo: ${error.message}`);
+        if (esErrorRed) {
+            // BACKOFF EXPONENCIAL: Aumenta la espera pero con un tope de 10 minutos
+            const delay = Math.min(baseDelay * Math.pow(2, reintento - 1), 600000); 
+            
+            console.warn(`📡 Red inestable. Intento ${reintento}. Reintentando en ${Math.round(delay/1000)}s...`);
             
             await new Promise(resolve => setTimeout(resolve, delay));
+            
+            // RECURSIÓN INFINITA: No hay maxReintentos, seguirá hasta que conecte
             return enviarAlertaBot(texto, reintento + 1);
         }
         
+        // Manejo de error de formato (HTML mal formado)
         if (error.response && error.response.status === 400) {
             console.warn("⚠️ Error de parseo HTML, reintentando en texto plano...");
             try {
@@ -70,13 +74,15 @@ async function enviarAlertaBot(texto, reintento = 1) {
                 console.log("✅ Enviado como texto plano.");
                 return true;
             } catch (retryError) {
-                console.error("❌ Falló el reintento plano:", retryError.message);
-                return false;
+                console.error("❌ Error crítico en texto plano:", retryError.message);
+                return false; 
             }
-        } else {
-            console.error("❌ Error al contactar al Bot:", error.message);
-            return false;
         }
+
+        // Si es otro tipo de error (ej: Bot bloqueado), esperamos un poco y reintentamos igual
+        console.error(`❌ Error inesperado: ${error.message}. Reintentando en 1 minuto...`);
+        await new Promise(resolve => setTimeout(resolve, 60000));
+        return enviarAlertaBot(texto, reintento + 1);
     }
 }
 
