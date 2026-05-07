@@ -89,6 +89,7 @@ async function enviarAlertaBot(texto, reintento = 1) {
 (async () => {
     const client = new TelegramClient(stringSession, apiId, apiHash, {
         connectionRetries: 5,
+        autoReconnect: true,
     });
 
     try {
