@@ -5,9 +5,17 @@ import { Peacemaker_engine } from "./Peacemaker_engine.js";
 import * as dotenv from 'dotenv';
 import fs from "fs-extra";
 import axios from "axios"; // Importamos Axios para mayor estabilidad
+import http from 'http';
+import https from 'https';
 
 dotenv.config();
+http.globalAgent.keepAlive = true;
+http.globalAgent.keepAliveMsecs = 30000;
+http.globalAgent.maxSockets = 50;
 
+https.globalAgent.keepAlive = true;
+https.globalAgent.keepAliveMsecs = 30000;
+https.globalAgent.maxSockets = 50;
 const apiId = parseInt(process.env.apiId);
 const apiHash = process.env.apiHash;
 const stringSession = new StringSession(process.env.session);
@@ -88,10 +96,15 @@ async function enviarAlertaBot(texto, reintento = 1) {
 
 (async () => {
     const client = new TelegramClient(stringSession, apiId, apiHash, {
-        connectionRetries: 5,
-        autoReconnect: true,
-    });
-
+    connectionRetries: 10,           // Más reintentos
+    autoReconnect: true,
+    retryDelay: 5000,                // Esperar 5 segundos entre reintentos
+    timeout: 0,                      // 🔥 CLAVE: 0 = Sin timeout de inactividad
+    floodSleepThreshold: 120,        // Evita bloqueos por flood
+    deviceModel: 'Peacemaker',
+    systemVersion: '1.0',
+    appVersion: '1.0.0'
+});
     try {
         await client.connect();
         console.log("✅ Servicio Peacemaker Permanente Activo.");
@@ -194,6 +207,15 @@ async function enviarAlertaBot(texto, reintento = 1) {
 };
 
         client.addEventHandler(handler, new NewMessage({}));
+                // Mantener la conexión viva con pings periódicos
+        setInterval(async () => {
+            try {
+                await client.invoke({ _: 'ping', pingId: Date.now() });
+                console.log("💓 KeepAlive enviado");
+            } catch (err) {
+                console.warn("⚠️ KeepAlive falló:", err.message);
+            }
+        }, 30000); // Cada 30 segundos
 
     } catch (error) {
         console.error("❌ Error crítico en el servicio:", error.message);
